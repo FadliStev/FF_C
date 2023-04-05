@@ -53,7 +53,7 @@ namespace Exercise1_PABD
                                             case '1':
                                                 {
                                                     Console.Clear();
-                                                    Console.WriteLine("DATA MAHASISWA\n");
+                                                    Console.WriteLine("Sewa Mobil\n");
                                                     Console.WriteLine();
                                                     pr.baca(conn);
 
@@ -62,30 +62,17 @@ namespace Exercise1_PABD
                                             case '2':
                                                 {
                                                     Console.Clear();
-                                                    Console.WriteLine("Input Data Mahasiswa\n");
-                                                    Console.WriteLine("Masukkan Id_admin : ");
-                                                    string id_admin = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan Nama Admin : ");
-                                                    string nama = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan No Telepon Admin : ");
-                                                    string no_telepon = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan jenis kelamin (L/P) : ");
-                                                    string jenis_kel = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan Jalan : ");
-                                                    string jalan = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan Kota : ");
-                                                    string kota = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan Provinsi : ");
-                                                    string provinsi = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan Id_pendaftar : ");
-                                                    string id_pendaftar = Console.ReadLine();
+                                                    Console.WriteLine("Input Data Admin\n");
                                                     Console.WriteLine("Masukkan Id_denda : ");
                                                     string id_denda = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan Ktp : ");
-                                                    string ktp = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Keterlambatan: ");
+                                                    string Keterlambatan = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Kerusakan (kecil/ sedang/ besar): ");
+                                                    string Kerusakan = Console.ReadLine();
+                                                   
                                                     try
                                                     {
-                                                        pr.insert(id_admin, nama, no_telepon, jenis_kel, jalan, kota, provinsi, id_pendaftar, id_denda, ktp, conn);
+                                                        pr.insert(id_denda, Keterlambatan, Kerusakan, conn);
                                                         conn.Close();
                                                     }
                                                     catch
@@ -132,7 +119,7 @@ namespace Exercise1_PABD
 
         public void baca(SqlConnection con)
         {
-            SqlCommand cmd = new SqlCommand("Select*From HRD.Mahasiswa", con);
+            SqlCommand cmd = new SqlCommand("Select*From admin", con);
             SqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {
@@ -144,25 +131,25 @@ namespace Exercise1_PABD
             }
         }
 
-        public void insert(string id_admin, string nama, string no_telepon, string jenis_kel, string jalan, string kota, string provinsi, string id_pendaftar, string id_denda, string ktp, SqlConnection con)
+        public void insert(string id_denda,string Keterlambatan, string Kerusakan,  SqlConnection con)
         {
             string str = "";
-            str = "insert into admin (id_admin, nama, no_telepon, jenis_kel, jalan, kota, porvinsi, id_pendaftar, id_denda, ktp)" + "values (@id_admin, @nama, @no_tlp, @jk, @jalan, @kota, @provinsi, @id_pendaftar, @id_denda, @ktp)";
+            str = "insert into admin (id_denda, Keterlambatan, Kerusakan)" + "values (@id_denda, @Keterlambatan, @Kerusakan)";
             SqlCommand cmd = new SqlCommand(str, con);
             cmd.CommandType = CommandType.Text;
 
-            cmd.Parameters.Add(new SqlParameter("nim", id_admin));
-            cmd.Parameters.Add(new SqlParameter("nma", nama));
-            cmd.Parameters.Add(new SqlParameter("noTlp", no_telepon));
-            cmd.Parameters.Add(new SqlParameter("JK", jenis_kel));
-            cmd.Parameters.Add(new SqlParameter("Jalan", jalan));
-            cmd.Parameters.Add(new SqlParameter("Kota", kota));
-            cmd.Parameters.Add(new SqlParameter("Provinsi", provinsi));
-            cmd.Parameters.Add(new SqlParameter("id_pendaftar", id_pendaftar));
             cmd.Parameters.Add(new SqlParameter("id_denda", id_denda));
-            cmd.Parameters.Add(new SqlParameter("ktp", ktp));
+            cmd.Parameters.Add(new SqlParameter("Keterlambatan", Keterlambatan));
+            cmd.Parameters.Add(new SqlParameter("Kerusakan", Kerusakan));
+           
             cmd.ExecuteNonQuery();
             Console.WriteLine("Data Berhasil Ditambahkan");
+        }
+
+        public void delete() {
+
+            string str = "";
+            str = "delete from admin where (id_admin)  " + "values (1231231)";
         }
     }
 }
