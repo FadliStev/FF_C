@@ -134,10 +134,10 @@ namespace Exercise1_PABD
             }
         }
 
-        public void insert(string id_admin, string nama, string Notlp, string jk, string jalan, string kota, string porvinsi, string id_pendaftar, string id_denda, string ktp, SqlConnection con)
+        public void insert(string id_admin, string nama, string no_telepon, string jenis_kel, string jalan, string kota, string porvinsi, string id_pendaftar, string id_denda, string ktp, SqlConnection con)
         {
             string str = "";
-            str = "insert into admin (NIM, NamaMhs, Sex, PhoneMhs)" + "values (@nim, @nma, @alamat, @JK, @Phn)";
+            str = "insert into admin (id_admin, nama, no_telepon, jenis_kel, jalan, kota, porvinsi, id_pendaftar, id_denda, ktp)" + "values (@id_admin, @nama, @no_tlp, @jk, @jalan, @kota, @provinsi, @id_pendaftar, @id_denda, @ktp)";
             SqlCommand cmd = new SqlCommand(str, con);
             cmd.CommandType = CommandType.Text;
 
