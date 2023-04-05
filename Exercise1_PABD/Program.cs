@@ -119,7 +119,7 @@ namespace Exercise1_PABD
 
         public void baca(SqlConnection con)
         {
-            SqlCommand cmd = new SqlCommand("Select*From admin", con);
+            SqlCommand cmd = new SqlCommand("Select*From denda", con);
             SqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {
@@ -134,7 +134,7 @@ namespace Exercise1_PABD
         public void insert(string id_denda,string Keterlambatan, string Kerusakan,  SqlConnection con)
         {
             string str = "";
-            str = "insert into admin (id_denda, Keterlambatan, Kerusakan)" + "values (@id_denda, @Keterlambatan, @Kerusakan)";
+            str = "insert into denda (id_denda, Keterlambatan, Kerusakan)" + "values (@id_denda, @Keterlambatan, @Kerusakan)";
             SqlCommand cmd = new SqlCommand(str, con);
             cmd.CommandType = CommandType.Text;
 
@@ -146,10 +146,6 @@ namespace Exercise1_PABD
             Console.WriteLine("Data Berhasil Ditambahkan");
         }
 
-        public void delete() {
-
-            string str = "";
-            str = "delete from admin where (id_admin)  " + "values (1231231)";
-        }
+        
     }
 }
