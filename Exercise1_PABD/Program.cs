@@ -134,10 +134,10 @@ namespace Exercise1_PABD
             }
         }
 
-        public void insert(string NIM, string NmaMhs, string Almt, string jk, string notlpn, SqlConnection con)
+        public void insert(string id_admin, string nama, string Notlp, string jk, string jalan, string kota, string porvinsi, string id_pendaftar, string id_denda, string ktp, SqlConnection con)
         {
             string str = "";
-            str = "insert into HRD.MAHASISWA (NIM, NamaMhs, Sex, PhoneMhs)" + "values (@nim, @nma, @alamat, @JK, @Phn)";
+            str = "insert into admin (NIM, NamaMhs, Sex, PhoneMhs)" + "values (@nim, @nma, @alamat, @JK, @Phn)";
             SqlCommand cmd = new SqlCommand(str, con);
             cmd.CommandType = CommandType.Text;
 
