@@ -134,18 +134,23 @@ namespace Exercise1_PABD
             }
         }
 
-        public void insert(string id_admin, string nama, string no_telepon, string jenis_kel, string jalan, string kota, string porvinsi, string id_pendaftar, string id_denda, string ktp, SqlConnection con)
+        public void insert(string id_admin, string nama, string no_telepon, string jenis_kel, string jalan, string kota, string provinsi, string id_pendaftar, string id_denda, string ktp, SqlConnection con)
         {
             string str = "";
             str = "insert into admin (id_admin, nama, no_telepon, jenis_kel, jalan, kota, porvinsi, id_pendaftar, id_denda, ktp)" + "values (@id_admin, @nama, @no_tlp, @jk, @jalan, @kota, @provinsi, @id_pendaftar, @id_denda, @ktp)";
             SqlCommand cmd = new SqlCommand(str, con);
             cmd.CommandType = CommandType.Text;
 
-            cmd.Parameters.Add(new SqlParameter("nim", NIM));
-            cmd.Parameters.Add(new SqlParameter("nma", NmaMhs));
-            cmd.Parameters.Add(new SqlParameter("alamat", Almt));
-            cmd.Parameters.Add(new SqlParameter("JK", jk));
-            cmd.Parameters.Add(new SqlParameter("Phn", notlpn));
+            cmd.Parameters.Add(new SqlParameter("nim", id_admin));
+            cmd.Parameters.Add(new SqlParameter("nma", nama));
+            cmd.Parameters.Add(new SqlParameter("noTlp", no_telepon));
+            cmd.Parameters.Add(new SqlParameter("JK", jenis_kel));
+            cmd.Parameters.Add(new SqlParameter("Jalan", jalan));
+            cmd.Parameters.Add(new SqlParameter("Kota", kota));
+            cmd.Parameters.Add(new SqlParameter("Provinsi", provinsi));
+            cmd.Parameters.Add(new SqlParameter("id_pendaftar", id_pendaftar));
+            cmd.Parameters.Add(new SqlParameter("id_denda", id_denda));
+            cmd.Parameters.Add(new SqlParameter("ktp", ktp));
             cmd.ExecuteNonQuery();
             Console.WriteLine("Data Berhasil Ditambahkan");
         }
