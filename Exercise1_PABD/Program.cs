@@ -63,19 +63,29 @@ namespace Exercise1_PABD
                                                 {
                                                     Console.Clear();
                                                     Console.WriteLine("Input Data Mahasiswa\n");
-                                                    Console.WriteLine("Masukkan NIM : ");
-                                                    string NIM = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan Nama Mahasiswa : ");
-                                                    string NmaMhs = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan Alamat Mahasiswa : ");
-                                                    string Almt = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Id_admin : ");
+                                                    string id_admin = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Nama Admin : ");
+                                                    string nama = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan No Telepon Admin : ");
+                                                    string no_telepon = Console.ReadLine();
                                                     Console.WriteLine("Masukkan jenis kelamin (L/P) : ");
-                                                    string jk = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan No Telepon : ");
-                                                    string notlpn = Console.ReadLine();
+                                                    string jenis_kel = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Jalan : ");
+                                                    string jalan = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Kota : ");
+                                                    string kota = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Provinsi : ");
+                                                    string provinsi = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Id_pendaftar : ");
+                                                    string id_pendaftar = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Id_denda : ");
+                                                    string id_denda = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Ktp : ");
+                                                    string ktp = Console.ReadLine();
                                                     try
                                                     {
-                                                        pr.insert(NIM, NmaMhs, Almt, jk, notlpn, conn);
+                                                        pr.insert(id_admin, nama, no_telepon, jenis_kel, jalan, kota, provinsi, id_pendaftar, id_denda, ktp, conn);
                                                         conn.Close();
                                                     }
                                                     catch
